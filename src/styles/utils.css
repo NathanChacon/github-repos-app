@@ -1,0 +1,15 @@
+.d-flex{
+    display: flex;
+}
+.d-flex.col{
+    flex-direction: column;
+}
+.d-flex.j-center{
+    justify-content: center;
+}
+.d-flex.a-center{
+    align-items: center;
+}
+.p-10{
+    padding: 10px;
+}

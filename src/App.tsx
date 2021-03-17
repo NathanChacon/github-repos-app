@@ -3,6 +3,8 @@ import {
   Switch,
   Route
 } from "react-router-dom"
+import './styles/utils.css'
+import './styles/theme.css'
 import Home from './views/Home/Home'
 function App() {
   return (
