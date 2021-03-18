@@ -7,7 +7,7 @@ import './styles/utils.css'
 import './styles/theme.css'
 import './styles/blocks.css'
 import Home from './views/Home/Home'
-import UserDetails from './views/UserDetails/UserDetais'
+import UserDetails from './views/UserDetails/UserDetails'
 function App() {
   return (
     <Router>
