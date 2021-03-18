@@ -2,6 +2,18 @@
     transition: background-color ease-in-out 0.3s;
     text-transform: uppercase
 }
+.select-input{
+    border: 1px solid rgba(255, 255, 255, 0.178);
+    color: white;
+    background: none;
+    padding:10px
+}
+.select-input__option{
+    color: black;
+}
+.select-input__option:hover{
+    cursor: pointer !important;
+}
 .container{
     width: 100%;
     min-height: 100vh;

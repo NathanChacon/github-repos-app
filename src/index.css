@@ -25,3 +25,12 @@ a{
   text-decoration: none;
   color: inherit;
 }
+
+select{
+  outline: none;
+  border: none;
+}
+
+select:hover{
+  cursor: pointer;
+}

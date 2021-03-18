@@ -1,7 +1,7 @@
 import './RepoCard.css'
 function RepoCard(props:RepoCardProps){
     return (
-        <div className="card bg-secondary">
+        <div className="card text-primary">
             <h1>
                 <a href={props.link} target="blank">{props.title}</a>
             </h1>

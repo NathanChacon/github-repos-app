@@ -3,4 +3,6 @@
     margin: 15px 0px;
     min-height: 200px;
     padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.178);
+    border-radius: 10px;
 }
