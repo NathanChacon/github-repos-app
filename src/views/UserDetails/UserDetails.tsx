@@ -7,12 +7,15 @@ function UserDetails(){
     const STARRED_REPOS = 'starred repos'
     const USER_REPOS = 'user repos'
     const USER_ERROR = 'User Not Found'
+    const REPOS_ERROR = 'Repos Not Found'
     const repoTypes:Array<string> = [USER_REPOS, STARRED_REPOS]
     const [selectedRepo, setSelectedRepo] = useState(USER_REPOS)
     const {userName} = useParams<{userName:string}>()
     const [user, setUser] = useState<User>()
     const [repos, setRepos] = useState<Array<Repo>>([])
-    const [userError, setUserError] = useState<string>('')
+    const [userError, setUserError] = useState('')
+    const [reposError, setReposError] = useState('')
+
     useEffect(() => {
         startUserConfig(userName)
         startRepoConfig(userName, selectedRepo)
@@ -34,7 +37,7 @@ function UserDetails(){
             setRepos(repos)
         }
         catch(error){
-            console.log('repos not found')
+            setReposError(error)
         }
     }
 
@@ -57,12 +60,10 @@ function UserDetails(){
             axios.get(`${userName}/repos`)
             .then(
                 (response) => {
-                    console.log(response)
-                    response.data ? resolve(response.data) : reject('User not found')
+                    response.data ? resolve(response.data) : reject(REPOS_ERROR)
                 },
                 (error) => {
-                    console.log(error)
-                    reject('User not found')
+                    reject(REPOS_ERROR)
                 }
             )
         })
@@ -73,12 +74,10 @@ function UserDetails(){
             axios.get(`${userName}/starred`)
             .then(
                 (response) => {
-                    console.log(response)
-                    response.data ? resolve(response.data) : reject('User not found')
+                    response.data ? resolve(response.data) : reject(REPOS_ERROR)
                 },
                 (error) => {
-                    console.log(error)
-                    reject('User not found')
+                    reject(REPOS_ERROR)
                 }
             )
         })
