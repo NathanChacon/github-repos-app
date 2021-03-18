@@ -1,0 +1,16 @@
+.search-bar{
+    width: 100%;
+    min-width: 300px;
+    border-radius: 26px;
+    overflow: hidden;
+}
+
+.search-bar__input{
+    padding: 15px;
+    width: 80%;
+}
+
+.search-bar__button{
+    width: 20%;
+    min-width: 100px
+}

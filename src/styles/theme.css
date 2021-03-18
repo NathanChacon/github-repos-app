@@ -1,7 +1,14 @@
 .bg-primary{
     background-color: #0D1117;
 }
-
 .text-primary{
+    color: #FFFF;
+}
+.button__theme__primary{
+    background-color: #043f8d;
+    color: #FFFF;
+}
+.button__theme__primary:hover{
+    background-color: #0757c0;
     color: #FFFF;
 }
