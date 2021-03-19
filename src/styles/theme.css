@@ -7,11 +7,11 @@
 .text-primary{
     color: #FFFF;
 }
-.button__theme__primary{
+.button--primary{
     background-color: #043f8d;
     color: #FFFF;
 }
-.button__theme__primary:hover{
+.button--primary:hover{
     background-color: #0757c0;
     color: #FFFF;
 }

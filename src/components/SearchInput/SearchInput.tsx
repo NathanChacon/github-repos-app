@@ -23,7 +23,7 @@ function SearchInput(props:SearchInputProps){
     return (
         <div className="search-bar d-flex" style={{width:props.width}}>
             <input type="text" className="search-bar__input p-10" name="search" placeholder={props.label} value={value} onChange={onInputChange} onKeyPress = {(e) => {handleKeyPress(e)}}></input>
-            <button className="search-bar__button button button__theme__primary p-10" onClick = {onSearch}>
+            <button className="search-bar__button button button--primary p-10" onClick = {onSearch}>
                 <FontAwesomeIcon className="search-bar__icon" icon={faSearch}></FontAwesomeIcon>
             </button>
         </div>
