@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import axios from '../../utils/api'
+import ReactLoading from 'react-loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import RepoCard from "./RepoCard/RepoCard"
@@ -17,6 +18,7 @@ function UserDetails(){
     const [repos, setRepos] = useState<Array<Repo>>([])
     const [userError, setUserError] = useState('')
     const [reposError, setReposError] = useState('')
+    const loadingType = 'bubbles'
 
     useEffect(() => {
         startUserConfig(userName)
@@ -130,7 +132,7 @@ function UserDetails(){
                             ?
                             <h5>{reposError}</h5>
                             :
-                            <h3>Loading</h3>
+                            <ReactLoading type={loadingType}></ReactLoading>
                         }
                     </div>
                 }
@@ -148,7 +150,7 @@ function UserDetails(){
                     <h1>{userError}</h1>
                 </React.Fragment>
                 :
-                <h3>Loading</h3>
+                <ReactLoading type={loadingType}></ReactLoading>
             }
         </div>
     )
