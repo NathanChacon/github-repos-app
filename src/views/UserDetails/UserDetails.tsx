@@ -108,8 +108,8 @@ function UserDetails(){
             <div>
                 <select className="select-input mt-20" value={selectedRepo} onChange={(e) => {onRepoTypeChange(e)}}>
                     {
-                        repoTypes.map((repoType) => {
-                            return <option className="select-input__option" value={repoType}>{repoType}</option>
+                        repoTypes.map((repoType, i) => {
+                            return <option key={i}  className="select-input__option" value={repoType}>{repoType}</option>
                         })
                     }
                 </select>
@@ -118,8 +118,8 @@ function UserDetails(){
                     ?
                     <React.Fragment>
                         {
-                            repos.map((repo) => {
-                                return <RepoCard title={repo.name} link={repo.clone_url} description={repo.description} private={repo.private} date={repo.updated_at}></RepoCard>
+                            repos.map((repo, i) => {
+                                return <RepoCard key={i} title={repo.name} link={repo.clone_url} description={repo.description} private={repo.private} date={repo.updated_at}></RepoCard>
                             })
                         }
                     </React.Fragment>
