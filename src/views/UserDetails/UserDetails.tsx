@@ -102,7 +102,7 @@ function UserDetails(){
                     <h2 className="user-details__title">Name: {user.login}</h2>
                     {user.email ? <h4 className="user-details__subtitle">Email: {user.email}</h4> : ''}
                     {user.followers ? <h4 className="user-details__subtitle">Fallowers: {user.followers}</h4> : ''}
-                    {user.bio ? <h4 className="user-details__subtitle">Bio: {user.bio}</h4> : ''}
+                    {user.bio ? <p className="user-details__description">{user.bio}</p> : ''}
                 </div>
             </div>
             <div>
@@ -128,7 +128,7 @@ function UserDetails(){
                         {
                             reposError 
                             ?
-                            <h3>{reposError}</h3>
+                            <h5>{reposError}</h5>
                             :
                             <h3>Loading</h3>
                         }
