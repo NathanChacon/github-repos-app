@@ -14,9 +14,15 @@ function SearchInput(props:SearchInputProps){
         setValue(event.target.value)
     }
 
+    const handleKeyPress = (event:React.KeyboardEvent) => {
+        if(event.key === 'Enter'){
+            onSearch()
+        }
+    }
+
     return (
         <div className="search-bar d-flex" style={{width:props.width}}>
-            <input type="text" className="search-bar__input p-10" name="search" placeholder={props.label} value={value} onChange={onInputChange}></input>
+            <input type="text" className="search-bar__input p-10" name="search" placeholder={props.label} value={value} onChange={onInputChange} onKeyPress = {(e) => {handleKeyPress(e)}}></input>
             <button className="search-bar__button button button__theme__primary p-10" onClick = {onSearch}>
                 <FontAwesomeIcon className="search-bar__icon" icon={faSearch}></FontAwesomeIcon>
             </button>
