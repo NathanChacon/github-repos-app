@@ -14,3 +14,7 @@
     width: 20%;
     min-width: 100px
 }
+
+.search-bar__icon{
+    font-size: 1.2rem;
+}

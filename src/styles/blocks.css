@@ -2,17 +2,18 @@
     transition: background-color ease-in-out 0.3s;
     text-transform: uppercase
 }
+.icon{
+    font-size: 6rem;
+}
 .select-input{
     border: 1px solid rgba(255, 255, 255, 0.178);
     color: white;
     background: none;
-    padding:10px
+    padding:10px;
+    font-size: 1rem;
 }
 .select-input__option{
     color: black;
-}
-.select-input__option:hover{
-    cursor: pointer !important;
 }
 .container{
     width: 100%;

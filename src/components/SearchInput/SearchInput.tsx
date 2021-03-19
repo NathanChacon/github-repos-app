@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import './SearchInput.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+
 function SearchInput(props:SearchInputProps){
     const [value, setValue] = useState('')
 
@@ -14,7 +17,9 @@ function SearchInput(props:SearchInputProps){
     return (
         <div className="search-bar d-flex" style={{width:props.width}}>
             <input type="text" className="search-bar__input p-10" name="search" placeholder={props.label} value={value} onChange={onInputChange}></input>
-            <button className="search-bar__button button button__theme__primary p-10" onClick = {onSearch}>search</button>
+            <button className="search-bar__button button button__theme__primary p-10" onClick = {onSearch}>
+                <FontAwesomeIcon className="search-bar__icon" icon={faSearch}></FontAwesomeIcon>
+            </button>
         </div>
     )
 }

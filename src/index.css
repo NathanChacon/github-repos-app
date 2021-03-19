@@ -26,6 +26,14 @@ a{
   color: inherit;
 }
 
+p{
+  line-height: 1.5rem;
+}
+
+h1,h2,h3,h4{
+  word-wrap: break-word;
+}
+
 select{
   outline: none;
   border: none;

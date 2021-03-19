@@ -16,9 +16,15 @@
 .p-20{
     padding: 20px;
 }
+.mt-20{
+    margin-top: 20px;
+}
 .mt-10{
     margin-top: 10px;
 }
 .mt-5{
     margin-top: 5px;
+}
+.mb-10{
+    margin-bottom: 10px;
 }

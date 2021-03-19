@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import axios from '../../utils/api'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import RepoCard from "./RepoCard/RepoCard"
 import './UserDetails.css'
 function UserDetails(){
     const STARRED_REPOS = 'starred repos'
     const USER_REPOS = 'user repos'
     const USER_ERROR = 'User Not Found'
-    const REPOS_ERROR = 'Repos Not Found'
+    const REPOS_ERROR = 'Empty'
     const repoTypes:Array<string> = [USER_REPOS, STARRED_REPOS]
     const [selectedRepo, setSelectedRepo] = useState(USER_REPOS)
     const {userName} = useParams<{userName:string}>()
@@ -32,6 +34,7 @@ function UserDetails(){
     }
 
     const startRepoConfig = async (userName:string, repoType:string) => {
+        setRepos([])
         try{
             const repos:Array<Repo> = repoType === USER_REPOS ? await getReposByUserName(userName) : await getStarredReposByUserName(userName)
             setRepos(repos)
@@ -60,7 +63,7 @@ function UserDetails(){
             axios.get(`${userName}/repos`)
             .then(
                 (response) => {
-                    response.data ? resolve(response.data) : reject(REPOS_ERROR)
+                    response.data && response.data.length ? resolve(response.data) : reject(REPOS_ERROR)
                 },
                 (error) => {
                     reject(REPOS_ERROR)
@@ -74,7 +77,7 @@ function UserDetails(){
             axios.get(`${userName}/starred`)
             .then(
                 (response) => {
-                    response.data ? resolve(response.data) : reject(REPOS_ERROR)
+                    response.data && response.data.length > 0 ? resolve(response.data) : reject(REPOS_ERROR)
                 },
                 (error) => {
                     reject(REPOS_ERROR)
@@ -88,58 +91,69 @@ function UserDetails(){
         startRepoConfig(userName, event.target.value)        
     }
 
-    return (
+    return user ? 
+    (
         <section className="container bg-primary text-primary d-flex col p-20"> 
-            {
-                user 
-                ?
-                <React.Fragment>
-                    <div className="user-details">
-                        <figure className="user-details__avatar">
-                            <img src={user.avatar_url}></img>
-                        </figure>
-                        <div className="user-details__text-container">
-                            <h2 className="user-details__title">Name: {user.login}</h2>
-                            {user.email ? <h4 className="user-details__subtitle">Email: {user.email}</h4> : ''}
-                            {user.followers ? <h4 className="user-details__subtitle">Fallowers: {user.followers}</h4> : ''}
-                            {user.bio ? <h4 className="user-details__subtitle">Bio: {user.bio}</h4> : ''}
-                        </div>
-                    </div>
-                    <div>
-                        <select className="select-input mt-10" value={selectedRepo} onChange={(e) => {onRepoTypeChange(e)}}>
-                            {
-                                repoTypes.map((repoType) => {
-                                    return <option className="select-input__option" value={repoType}>{repoType}</option>
-                                })
-                            }
-                        </select>
+            <div className="user-details">
+                <figure className="user-details__avatar">
+                    <img src={user.avatar_url}></img>
+                </figure>
+                <div className="user-details__text-container">
+                    <h2 className="user-details__title">Name: {user.login}</h2>
+                    {user.email ? <h4 className="user-details__subtitle">Email: {user.email}</h4> : ''}
+                    {user.followers ? <h4 className="user-details__subtitle">Fallowers: {user.followers}</h4> : ''}
+                    {user.bio ? <h4 className="user-details__subtitle">Bio: {user.bio}</h4> : ''}
+                </div>
+            </div>
+            <div>
+                <select className="select-input mt-20" value={selectedRepo} onChange={(e) => {onRepoTypeChange(e)}}>
+                    {
+                        repoTypes.map((repoType) => {
+                            return <option className="select-input__option" value={repoType}>{repoType}</option>
+                        })
+                    }
+                </select>
+                {
+                    repos.length > 0 
+                    ?
+                    <React.Fragment>
                         {
-                            repos.length !== 0 
+                            repos.map((repo) => {
+                                return <RepoCard title={repo.name} link={repo.clone_url} description={repo.description} private={repo.private} date={repo.updated_at}></RepoCard>
+                            })
+                        }
+                    </React.Fragment>
+                    :
+                    <div className="d-flex a-center j-center mt-10">
+                        {
+                            reposError 
                             ?
-                            <React.Fragment>
-                                {
-                                    repos.map((repo) => {
-                                        return <RepoCard title={repo.name} link={repo.clone_url} description={repo.description} private={repo.private} date={repo.updated_at}></RepoCard>
-                                    })
-                                }
-                            </React.Fragment>
+                            <h3>{reposError}</h3>
                             :
-                            <div className="d-flex a-center j-center mt-10">
-                                loading or error
-                            </div>
+                            <h3>Loading</h3>
                         }
                     </div>
-                </React.Fragment>
-                :
-                <div className="container d-flex a-center j-center">
-                    {
-                        userError ? userError : 'loading'
-                    }
-                </div>
-            }
+                }
+            </div>
         </section>
     )
+    :
+    (
+        <div className="container d-flex col a-center j-center bg-primary text-primary">
+            {
+                userError 
+                ?
+                <React.Fragment>
+                    <FontAwesomeIcon icon={faTimes} className="icon"/>
+                    <h1>{userError}</h1>
+                </React.Fragment>
+                :
+                <h3>Loading</h3>
+            }
+        </div>
+    )
 }
+
 
 interface User {
     login:string,
