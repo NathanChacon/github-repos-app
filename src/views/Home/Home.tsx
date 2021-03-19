@@ -6,8 +6,11 @@ import { faRocket } from '@fortawesome/free-solid-svg-icons'
 function Home(){
     const history = useHistory()
     const onSearch = (value:string) => {
-        history.push(`/user/${value}`)
+        if(value && value.trim()){
+            history.push(`/user/${value}`)
+        }
     }
+
     return (
         <section className="container bg-primary text-primary d-flex col a-center j-center">
             <FontAwesomeIcon icon={faRocket} className="icon mb-10"></FontAwesomeIcon>
