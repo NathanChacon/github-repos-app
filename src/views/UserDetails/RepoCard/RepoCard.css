@@ -2,7 +2,20 @@
     width: 100%;
     margin: 15px 0px;
     min-height: 200px;
-    padding: 15px;
+    padding: 15px 15px 0px 15px;
     border: 1px solid rgba(255, 255, 255, 0.178);
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.card__footer{
+    display: flex;
+    justify-content: flex-end;
+}
+.card__footer-content{
+    margin-right: 10px;
+}
+.card__footer-content__icon{
+    margin-right: 4px;
 }
