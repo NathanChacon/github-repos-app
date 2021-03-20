@@ -4,7 +4,7 @@ import axios from '../../utils/api'
 import ReactLoading from 'react-loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faCodeBranch, faClock} from '@fortawesome/free-solid-svg-icons'
-import RepoCard, {RepoCardProps} from "./RepoCard/RepoCard"
+import Card, {CardProps} from "./Card/Card"
 import './UserDetails.css'
 function UserDetails(){
     const STARRED_REPOS = 'starred repos'
@@ -15,7 +15,7 @@ function UserDetails(){
     const [selectedRepo, setSelectedRepo] = useState(USER_REPOS)
     const {userName} = useParams<{userName:string}>()
     const [user, setUser] = useState<User>()
-    const [cards, setCards] = useState<Array<RepoCardProps>>([])
+    const [cards, setCards] = useState<Array<CardProps>>([])
     const [userError, setUserError] = useState('')
     const [reposError, setReposError] = useState('')
     const loadingType = 'bubbles'
@@ -39,7 +39,7 @@ function UserDetails(){
         setCards([])
         try{
             const repos:Array<Repo> = repoType === USER_REPOS ? await getReposByUserName(userName) : await getStarredReposByUserName(userName)
-            const cards:Array<RepoCardProps> = repos.map((repo) => {
+            const cards:Array<CardProps> = repos.map((repo) => {
                 return {
                     title: repo.name,
                     description: repo.description,
@@ -139,7 +139,7 @@ function UserDetails(){
                     <React.Fragment>
                         {
                             cards.map((card, i) => {
-                                return <RepoCard {...card}></RepoCard>
+                                return <Card {...card}></Card>
                             })
                         }
                     </React.Fragment>

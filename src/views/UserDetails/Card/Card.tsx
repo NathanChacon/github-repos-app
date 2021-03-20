@@ -1,6 +1,6 @@
-import './RepoCard.css'
+import './Card.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-function RepoCard(props:RepoCardProps){
+function Card(props:CardProps){
     return (
         <div className="card text-primary">
             <div className="card__main-content">
@@ -23,11 +23,11 @@ function RepoCard(props:RepoCardProps){
     )
 }
 
-export interface RepoCardProps{
+export interface CardProps{
     title:string,
     description:string
     link:string,
     footer:Array<{icon:any, label:string}>
 }
 
-export default RepoCard
+export default Card
