@@ -4,7 +4,7 @@ import axios from '../../utils/api'
 import ReactLoading from 'react-loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faCodeBranch, faClock} from '@fortawesome/free-solid-svg-icons'
-import Card, {CardProps} from "./Card/Card"
+import Card, {CardProps} from "../../components/Card/Card"
 import './UserDetails.css'
 function UserDetails(){
     const STARRED_REPOS = 'starred repos'
