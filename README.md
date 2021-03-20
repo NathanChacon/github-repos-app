@@ -3,6 +3,7 @@
 * CSS
 * HTML
 * REACT
+* TYPESCRIPT
 * LOVE
 
 # Installation
