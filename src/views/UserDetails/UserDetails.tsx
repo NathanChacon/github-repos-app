@@ -3,8 +3,8 @@ import { useParams } from "react-router"
 import axios from '../../utils/api'
 import ReactLoading from 'react-loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
-import RepoCard from "./RepoCard/RepoCard"
+import { faTimes, faCodeBranch, faClock} from '@fortawesome/free-solid-svg-icons'
+import Card, {CardProps} from "../../components/Card/Card"
 import './UserDetails.css'
 function UserDetails(){
     const STARRED_REPOS = 'starred repos'
@@ -15,7 +15,7 @@ function UserDetails(){
     const [selectedRepo, setSelectedRepo] = useState(USER_REPOS)
     const {userName} = useParams<{userName:string}>()
     const [user, setUser] = useState<User>()
-    const [repos, setRepos] = useState<Array<Repo>>([])
+    const [cards, setCards] = useState<Array<CardProps>>([])
     const [userError, setUserError] = useState('')
     const [reposError, setReposError] = useState('')
     const loadingType = 'bubbles'
@@ -36,14 +36,32 @@ function UserDetails(){
     }
 
     const startRepoConfig = async (userName:string, repoType:string) => {
-        setRepos([])
+        setCards([])
         try{
             const repos:Array<Repo> = repoType === USER_REPOS ? await getReposByUserName(userName) : await getStarredReposByUserName(userName)
-            setRepos(repos)
+            const cards:Array<CardProps> = repos.map((repo) => {
+                return {
+                    title: repo.name,
+                    description: repo.description,
+                    link: repo.clone_url,
+                    footer:[
+                        {label:getFormattedDate(repo.updated_at), icon:faClock},
+                        {label:repo.forks.toString(), icon:faCodeBranch}
+                    ]
+                }
+            })
+            setCards([...cards])
         }
         catch(error){
             setReposError(error)
         }
+    }
+
+    const getFormattedDate = (rawDate:string):string => {
+        const date = new Date(rawDate)
+        let formattedDate = date.toISOString()
+        formattedDate = formattedDate.split('T')[0].replaceAll('-','/')
+        return formattedDate
     }
 
     const getUserByName = (userName:string):Promise<User> => {
@@ -102,8 +120,8 @@ function UserDetails(){
                 </figure>
                 <div className="user-details__text-container">
                     <h2 className="user-details__title">Name: {user.login}</h2>
-                    {user.email ? <h4 className="user-details__subtitle">Email: {user.email}</h4> : ''}
-                    {user.followers ? <h4 className="user-details__subtitle">Fallowers: {user.followers}</h4> : ''}
+                    {user.email ? <h4 className="user-details__title">Email: {user.email}</h4> : ''}
+                    {user.followers ? <h4 className="user-details__title">Fallowers: {user.followers}</h4> : ''}
                     {user.bio ? <p className="user-details__description">{user.bio}</p> : ''}
                 </div>
             </div>
@@ -116,12 +134,12 @@ function UserDetails(){
                     }
                 </select>
                 {
-                    repos.length > 0 
+                    cards.length > 0 
                     ?
                     <React.Fragment>
                         {
-                            repos.map((repo, i) => {
-                                return <RepoCard key={i} title={repo.name} link={repo.clone_url} description={repo.description} private={repo.private} date={repo.updated_at}></RepoCard>
+                            cards.map((card, i) => {
+                                return <Card {...card}></Card>
                             })
                         }
                     </React.Fragment>

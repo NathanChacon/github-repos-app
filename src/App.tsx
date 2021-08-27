@@ -1,5 +1,6 @@
 import {
   HashRouter as Router,
+  Redirect,
   Switch,
   Route
 } from "react-router-dom"
@@ -8,6 +9,8 @@ import './styles/theme.css'
 import './styles/blocks.css'
 import Home from './views/Home/Home'
 import UserDetails from './views/UserDetails/UserDetails'
+import NotFoundPage from './views/NotFoundPage/NotFoundPage'
+
 function App() {
   return (
     <Router>
@@ -18,6 +21,8 @@ function App() {
         <Route exact path='/user/:userName'>
           <UserDetails></UserDetails>
         </Route>
+        <Route path="/404" component={NotFoundPage} />
+        <Redirect to="/404"/>
       </Switch>
     </Router>
   )
