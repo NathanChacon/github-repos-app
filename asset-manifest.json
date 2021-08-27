@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/NathanChacon/github-repos-app/static/css/main.80b8982f.chunk.css",
-    "main.js": "/NathanChacon/github-repos-app/static/js/main.d126b04f.chunk.js",
-    "main.js.map": "/NathanChacon/github-repos-app/static/js/main.d126b04f.chunk.js.map",
-    "runtime-main.js": "/NathanChacon/github-repos-app/static/js/runtime-main.f6c326a8.js",
-    "runtime-main.js.map": "/NathanChacon/github-repos-app/static/js/runtime-main.f6c326a8.js.map",
-    "static/js/2.5b795c01.chunk.js": "/NathanChacon/github-repos-app/static/js/2.5b795c01.chunk.js",
-    "static/js/2.5b795c01.chunk.js.map": "/NathanChacon/github-repos-app/static/js/2.5b795c01.chunk.js.map",
-    "static/js/3.26b0be4c.chunk.js": "/NathanChacon/github-repos-app/static/js/3.26b0be4c.chunk.js",
-    "static/js/3.26b0be4c.chunk.js.map": "/NathanChacon/github-repos-app/static/js/3.26b0be4c.chunk.js.map",
+    "main.css": "/NathanChacon/github-repos-app/static/css/main.40e943c2.chunk.css",
+    "main.js": "/NathanChacon/github-repos-app/static/js/main.fd2d4bfd.chunk.js",
+    "main.js.map": "/NathanChacon/github-repos-app/static/js/main.fd2d4bfd.chunk.js.map",
+    "runtime-main.js": "/NathanChacon/github-repos-app/static/js/runtime-main.14fcc3b9.js",
+    "runtime-main.js.map": "/NathanChacon/github-repos-app/static/js/runtime-main.14fcc3b9.js.map",
+    "static/js/2.2f9dd3b9.chunk.js": "/NathanChacon/github-repos-app/static/js/2.2f9dd3b9.chunk.js",
+    "static/js/2.2f9dd3b9.chunk.js.map": "/NathanChacon/github-repos-app/static/js/2.2f9dd3b9.chunk.js.map",
+    "static/js/3.4865ccc7.chunk.js": "/NathanChacon/github-repos-app/static/js/3.4865ccc7.chunk.js",
+    "static/js/3.4865ccc7.chunk.js.map": "/NathanChacon/github-repos-app/static/js/3.4865ccc7.chunk.js.map",
     "index.html": "/NathanChacon/github-repos-app/index.html",
-    "static/css/main.80b8982f.chunk.css.map": "/NathanChacon/github-repos-app/static/css/main.80b8982f.chunk.css.map",
-    "static/js/2.5b795c01.chunk.js.LICENSE.txt": "/NathanChacon/github-repos-app/static/js/2.5b795c01.chunk.js.LICENSE.txt"
+    "static/css/main.40e943c2.chunk.css.map": "/NathanChacon/github-repos-app/static/css/main.40e943c2.chunk.css.map",
+    "static/js/2.2f9dd3b9.chunk.js.LICENSE.txt": "/NathanChacon/github-repos-app/static/js/2.2f9dd3b9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.f6c326a8.js",
-    "static/js/2.5b795c01.chunk.js",
-    "static/css/main.80b8982f.chunk.css",
-    "static/js/main.d126b04f.chunk.js"
+    "static/js/runtime-main.14fcc3b9.js",
+    "static/js/2.2f9dd3b9.chunk.js",
+    "static/css/main.40e943c2.chunk.css",
+    "static/js/main.fd2d4bfd.chunk.js"
   ]
 }
